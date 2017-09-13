@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.post('/todos',(req,res)=>{
   var todo= new Todo({
     text:req.body.text
+//  console.log(req.body);
   });
   todo.save().then((doc)=>{
   res.send(doc);
@@ -19,10 +20,16 @@ app.post('/todos',(req,res)=>{
   ,(e)=>{
     res.status(400).send(e);
   });
-
 });
-
-
+//
+// app.get('/todos',(req,res)=>{
+//   Todo.find().then(()=>{
+//     res.send({todos});
+//
+//   },(e)=>{
+//   res.status(400).send(e);
+// })
+// });
 
 app.listen(3000,()=>{
   console.log('Started on post 3000');
